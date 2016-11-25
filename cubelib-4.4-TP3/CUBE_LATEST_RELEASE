@@ -1,0 +1,16 @@
+Name: CUBE
+Version: 4.4
+Notes:
+    - Various bug fixes in library.
+    - CUBELIB_DEBUG and CUBEPL_VERBOSE_METRICS set CubePL engine into verbose mode. 
+    - Cube tools fdo not append wrongly .cubex extension.
+    - Fixes in CubePL engine: 
+      -- support for metric::call::<uniq_name>;
+      -- fixed seg fault if the metric "rowwise=false";
+      -- fixed seg fault while metric::set of unknown metric;
+      -- reference to a metric in CubePL Init section doesn't crash anymore;
+      -- "?" within a regex is not ignored anymore.
+    - Remapper doesn't unhide "omp" metrics, if no OpenMp region detected, but -s option 
+    is provided.
+    - Fixed a seg fault if Cube tries to read a non-Cube file, like .txt.
+    - Provide examples of typical cube files.

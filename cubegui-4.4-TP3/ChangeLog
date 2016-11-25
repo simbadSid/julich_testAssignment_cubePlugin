@@ -1,0 +1,24 @@
+Name: Cube GUI
+Version: 4.4-TP2
+    - Various bug fixes in library and GUI.
+    - Using ScoreP for GUI and Library instrumentation for the automatic performance benchmarking.
+    - Manual initialization of a plugin after GUI start is possible.
+    - Extended marker API..
+    - Plugin can define an icon as a marker.
+    - Improved automatic CubePL keyword suggestion while creation of a derived metric.
+    - Improved plugins search strategy.
+    - Added support for multiple plugin search directories, via env variable and via GUI setting.
+    - Allow to specify colors of the selected item in the tree panel of a Cube GUI.
+    - Source code viewer allows search within the displayed text..
+    - Enhanced the start windows ot the Cube GUI..
+    - Report uset Qt version in the "About" dialog of a GUI.
+    - Improved the Qt detection steps while the configure time.
+
+Version: 4.4-TP1
+    - Various bug fixes in library and GUI.
+    - Using ScoreP for GUI and Library instrumentation for the automatic performance benchmarking.
+    - Manual initialization of a plugin after GUI start is possible.
+    - Extended marker API..
+    - Plugin can define an icon as a marker.
+    - Improved automatic CubePL keyword suggestion while creation of a derived metric.
+    - Improved plugins search strategy.

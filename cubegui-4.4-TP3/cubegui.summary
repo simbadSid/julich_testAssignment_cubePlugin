@@ -1,0 +1,44 @@
+Configure command:
+  ./configure                   '--prefix=/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-install'
+
+Loaded modules:
+  No modules loaded
+
+Configuration summary:
+  CubeGUI 4.4-TP3:
+    Cube installed into:        /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-install
+    Platform:                   linux (auto detected)
+    Cross compiling:            no (auto detected)
+    cubegui-config:             /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-install/bin/cubegui-config
+    For detailed information:   "/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-install/bin/cubegui-config --help"
+    Examples:                   /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-install/share/doc/cubegui/example
+
+    CubeGUI (frontend):
+      C++ compiler used:        g++
+       Compiler flags used:     -g -O2 
+      With cubelib-config:      /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubelib-install/bin/cubelib-config
+      With Cube include path:   -I/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubelib-install/include/cubelib
+      With Cube ldflags:         -L/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubelib-install/lib -Wl,-rpath -Wl,/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubelib-install/lib
+      Disable qDebug() and qWarning():
+                                -DQT_NO_DEBUG_OUTPUT -DQT_NO_WARNING_OUTPUT
+      With qmake:               /usr/lib64/qt4/bin/qmake
+      With Qt version:          4.8.7
+      With Qt specs:            default
+      With Qt defines:          -DQT_NO_DEBUG -DQT_PLUGIN -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_SHARED
+      With Qt include path:     -I/usr/lib64/qt4/mkspecs/linux-g++ -I. -I/usr/include/QtCore -I/usr/include/QtNetwork -I/usr/include/QtGui -I/usr/include -I. -I.
+      With Qt compiler flags:   -pipe -O2 -Wall -W -D_REENTRANT $(QT_DEFINES)
+      With Qt linker flags:     -Wl,-O1
+      With Qt libraries:        -L/usr/lib64 -lQtGui -lQtNetwork -lQtCore -lpthread 
+      With moc:                 /usr/lib64/qt4/bin/moc
+      With uic:                 /usr/lib64/qt4/bin/uic
+      With supported plugins:
+        Plugin "CubeDiff":      yes
+        Plugin "Barplot":       yes
+        Plugin "Heatmap":       yes
+        Plugin "Launch" :       yes
+        Plugin "Paraver" :      yes
+        Plugin "SourceEditor" : yes
+        Plugin "Statistics" :   yes
+        Plugin "Vampir" :       no
+        Plugin "AdvancedColorMaps" :
+                                yes

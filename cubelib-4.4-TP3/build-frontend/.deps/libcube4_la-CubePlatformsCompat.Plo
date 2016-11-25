@@ -1,0 +1,5 @@
+libcube4_la-CubePlatformsCompat.lo: \
+ ../src/cube/src/service/CubePlatformsCompat.cpp \
+ /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:

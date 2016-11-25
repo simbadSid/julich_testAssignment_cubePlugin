@@ -1,0 +1,23 @@
+libcube4_la-CubeNOPTrafo.lo: \
+ ../src/cube/src/dimensions/metric/value/trafo/single_value/CubeNOPTrafo.cpp \
+ /usr/include/stdc-predef.h ../src/config.h \
+ ../src/cubelib-config-frontend.h ../src/cubelib-config-common.h \
+ ../src/cubelib-config-custom.h ../src/cubelib-version.h \
+ ../src/cube/include/dimensions/metric/value/trafo/single_value/CubeNOPTrafo.h \
+ ../src/cube/include/dimensions/metric/value/trafo/single_value/CubeSingleValueTrafo.h
+
+/usr/include/stdc-predef.h:
+
+../src/config.h:
+
+../src/cubelib-config-frontend.h:
+
+../src/cubelib-config-common.h:
+
+../src/cubelib-config-custom.h:
+
+../src/cubelib-version.h:
+
+../src/cube/include/dimensions/metric/value/trafo/single_value/CubeNOPTrafo.h:
+
+../src/cube/include/dimensions/metric/value/trafo/single_value/CubeSingleValueTrafo.h:

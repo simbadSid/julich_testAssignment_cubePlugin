@@ -1,0 +1,20 @@
+libcube4_la-CubeClientCallbackData.lo: \
+ ../src/cube/src/network/CubeClientCallbackData.cpp \
+ /usr/include/stdc-predef.h ../src/config.h \
+ ../src/cubelib-config-frontend.h ../src/cubelib-config-common.h \
+ ../src/cubelib-config-custom.h ../src/cubelib-version.h \
+ ../src/cube/include/network/CubeClientCallbackData.h
+
+/usr/include/stdc-predef.h:
+
+../src/config.h:
+
+../src/cubelib-config-frontend.h:
+
+../src/cubelib-config-common.h:
+
+../src/cubelib-config-custom.h:
+
+../src/cubelib-version.h:
+
+../src/cube/include/network/CubeClientCallbackData.h:

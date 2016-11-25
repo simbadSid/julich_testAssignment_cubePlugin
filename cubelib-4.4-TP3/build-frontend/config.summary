@@ -1,0 +1,18 @@
+    CubeLib (frontend):
+      POSIX socket:             yes
+      Networking:               yes
+      Cube C++ Library:         yes
+      Cube Tools:               yes
+      Frontend zlib compression :
+                                readonly
+        zlib headers :          
+        zlib library :            -lz
+        Notice:                 Front end part of cube (c++ cube library, tools and GUI) can read compressed cube files, but
+                                write only uncompressed cube files.
+        zlib compression flags :
+                                 -DFRONTEND_CUBE_COMPRESSED_READONLY=yes 
+      Use R for cube_dump:      no
+        Notice:                 R, Rscript, RInside and Rcpp are necessary
+      Data loading strategy :   Keep all in memory, load on demand
+      C++ compiler used:        g++
+       Compiler flags used:     -g -O2 
