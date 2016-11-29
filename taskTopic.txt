@@ -1,0 +1,25 @@
+
+1. Download Cube 4.4 TP3 C++ Library and GUI from http://www.scalasca.org/software/cube-4.x/download.html
+2. Install them somewhere in some directory <cubedir>.
+   - is typical autotools installation routine, see INSTALL
+3. take look at <src>/GUI-qt/plugins/CubeDiff
+   This is a so-called context-free Cube Plugin, it performs an operation "diff" between two cube files and loads the result.
+  There are more of such operations like  "Mean", "Merge" or others. They are implemented as separate command-line tools within Cube C++ library.
+5. Create next to "CubeDiff" the  "CubeMerge" or "CubeMean" (choose one) plugin in the source tree
+6. Adjust build system of Cube to build it (edit a .am file)
+7. Implement corresponding functionality of this plugin:
+    - algebra is implemented in cube c++ library header <algebra4.>
+
+
+As reference, see Plugin API in
+http://apps.fz-juelich.de/scalasca/releases/cube/4.3/docs/CubeGuiPluginDeveloperGuide.pdf
+
+and
+
+or better(!) take look at API in  PluginService.h of CubeGUI.
+
+If you have ANY questions to this (i could have made some typo or documentation is incomplete) - do not hesitate to ask me.
+
+In this way i can estimate which tasks would come upon you in case of employment and you can estimate whether you want/can to work here.
+
+
