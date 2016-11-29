@@ -31,9 +31,7 @@ using namespace cube;
 using namespace cubepluginapi;
 
 #if QT_VERSION < 0x050000
-// TODO - implement CubeMeanPlugin instead of CubeDiffPlugin
 Q_EXPORT_PLUGIN2( CubeMeanPlugin, CubeMean ) // ( PluginName, ClassName )
-// TODO - end
 #endif
 
 void
@@ -175,13 +173,11 @@ void
 CubeMean::startAction()
 {
     cube::Cube*		mean	= new Cube();
-    cube::Cube**	cubeList= new Cube[2];
+    cube::Cube**	cubeList= new *Cube[2];
     cubeList[0] = cube1;
     cubeList[1] = cube2;
     try {
-// TODO - implement cube4_mean instead of cube4_diff
 	cube::cube4_mean(mean, cubeList, 2, reduce->isChecked(), collapse->isChecked())
-// TODO - end
     }
     catch ( cube::Error e )
     {

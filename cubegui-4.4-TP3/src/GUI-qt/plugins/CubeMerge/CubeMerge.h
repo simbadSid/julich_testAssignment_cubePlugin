@@ -7,7 +7,10 @@
 **  This software may be modified and distributed under the terms of       **
 **  a BSD-style license.  See the COPYING file in the package base         **
 **  directory for details.                                                 **
-****************************************************************************/
+*****************************************************************************
+**  Modification braugth by SID LAKHDAR Riyane:				   **
+**	Objective: implement new context-free plugins			   **
+*****************************************************************************/
 
 
 #ifndef CUBE_TOOLS_MERGE_H
@@ -16,8 +19,13 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QCheckBox>
+#include <QSignalMapper>
 #include "ContextFreePlugin.h"
 #include "ContextFreeServices.h"
+#include "listCubeEntry.h"
+
+
+
 
 class CubeMerge : public QObject, public cubepluginapi::ContextFreePlugin
 {
@@ -49,27 +57,28 @@ public:
 
 private slots:
     void
-    startAction();
+    addCubeEntry();
     void
-    loadFile1();
+    loadFile( ListCubeEntry* element );
     void
-    loadFile2();
+    removeCubeEntry( ListCubeEntry* element );
+    void
+    startAction();	// TODO
     void
     uncheckChoice();
 
 private:
-    cubepluginapi::ContextFreeServices* service;
+    cubepluginapi::ContextFreeServices*	service;
 
-    cube::Cube*  cube1;
-    cube::Cube*  cube2;
-    QPushButton* merge;
-    QLabel*      fileName1;
-    QLabel*      fileName2;
-    QCheckBox*   reduce;
-    QCheckBox*   collapse;
+    ListCubeEntry*	listCubeEntry;
+    QSignalMapper*	signalMapper_loadFile;
+    QSignalMapper*	signalMapper_removeEntry;
+    QPushButton*	addCube;
+    QPushButton*	merge;
+    QCheckBox*		reduce;
+    QCheckBox*		collapse;
     void
-    loadFile( cube::Cube** cube,
-              QLabel*      label );
+    refreshGui();
 };
 
 #endif // CUBE_TOOLS_H

@@ -7,7 +7,10 @@
 **  This software may be modified and distributed under the terms of       **
 **  a BSD-style license.  See the COPYING file in the package base         **
 **  directory for details.                                                 **
-****************************************************************************/
+*****************************************************************************
+**  Modification braugth by SID LAKHDAR Riyane:				   **
+**	Objective: implement new context-free plugins			   **
+*****************************************************************************/
 
 
 #include <QtPlugin>
@@ -28,9 +31,7 @@ using namespace cube;
 using namespace cubepluginapi;
 
 #if QT_VERSION < 0x050000
-// TODO - implement CubeMergePlugin instead of CubeDiffPlugin
 Q_EXPORT_PLUGIN2( CubeMergePlugin, CubeMerge ) // ( PluginName, ClassName )
-// TODO - end
 #endif
 
 void
@@ -50,46 +51,53 @@ CubeMerge::name() const
 void
 CubeMerge::opened( ContextFreeServices* service )
 {
-    this->service = service;
-    cube1         = 0;
-    cube2         = 0;
-    merge         = 0;
+    this->service	= service;
+    this->merge		= 0;
+    this->listCubeEntry	= new ListCubeEntry();
 
-    QWidget*     widget      = service->getWidget();
-    QHBoxLayout* layoutOuter = new QHBoxLayout();
-    widget->setLayout( layoutOuter );
+    this->signalMapper_loadFile		= new QSignalMapper (this);
+    this->signalMapper_removeEntry	= new QSignalMapper (this);
 
-    reduce   = new QCheckBox( "Reduce system dimension" );
-    collapse = new QCheckBox( "Collapse system dimension" );
-    connect( reduce, SIGNAL( pressed() ), this, SLOT( uncheckChoice() ) );
-    connect( collapse, SIGNAL( pressed() ), this, SLOT( uncheckChoice() ) );
+    merge	= new QPushButton( "Show merge" );
+    addCube	= new QPushButton( "Add cube" );
+    reduce	= new QCheckBox( "Reduce system dimension" );
+    collapse	= new QCheckBox( "Collapse system dimension" );
+    connect( merge,			SIGNAL( clicked() ),	this, SLOT( startAction() ) );
+    connect( addCube,			SIGNAL( clicked() ),	this, SLOT( addCubeEntry() ) );
+    connect( reduce,			SIGNAL( pressed() ),	this, SLOT( uncheckChoice() ) );
+    connect( collapse,			SIGNAL( pressed() ),	this, SLOT( uncheckChoice() ) );
+    connect( signalMapper_loadFile,	SIGNAL( mapped(int)),	this, SLOT( loadFile( ListCubeEntry* ) ) );
+    connect( signalMapper_removeEntry,	SIGNAL( mapped(int)),	this, SLOT( removeCubeEntry( ListCubeEntry* ) ) );
 
-    QWidget*     inner  = new QWidget();
-    QGridLayout* layout = new QGridLayout( inner );
-    layoutOuter->addWidget( inner );
-    inner->setSizePolicy( QSizePolicy::Maximum, QSizePolicy::Maximum );
-
-    QPushButton* but1 = new QPushButton( QApplication::style()->standardIcon( QStyle::SP_DirOpenIcon ), " Open cube file (minuend)" );
-    connect( but1, SIGNAL( clicked() ), this, SLOT( loadFile1() ) );
-    but1->setStyleSheet( "padding:4px;text-align: left" );
-
-    QPushButton* but2 = new QPushButton( QApplication::style()->standardIcon( QStyle::SP_DirOpenIcon ), " Open cube file (subtrahend)" );
-    connect( but2, SIGNAL( clicked() ), this, SLOT( loadFile2() ) );
-    but2->setStyleSheet( "padding:4px;text-align: left" );
-
-    merge = new QPushButton( "Show merge" );
-    connect( merge, SIGNAL( clicked() ), this, SLOT( startAction() ) );
     merge->setEnabled( false );
     merge->setStyleSheet( "padding:4px;text-align: center" );
 
-    fileName1 = new QLabel();
-    fileName2 = new QLabel();
+    refreshGui();
+}
+
+void
+CubeMerge::refreshGui()
+{
+    QWidget*	 widget		= this->service->getWidget();
+    QWidget*	 inner		= new QWidget();
+    QGridLayout* layout		= new QGridLayout( inner );
+    QHBoxLayout* layoutOuter	= new QHBoxLayout();
+
+    widget	->setLayout( layoutOuter );
+    layoutOuter	->addWidget( inner );
+    inner	->setSizePolicy( QSizePolicy::Maximum, QSizePolicy::Maximum );
 
     int line = 0;
-    layout->addWidget( but1, line, 0 );
-    layout->addWidget( fileName1, line++, 1 );
-    layout->addWidget( but2, line, 0 );
-    layout->addWidget( fileName2, line++, 1 );
+    ListCubeEntry* listCubeEntryPtr = this->listCubeEntry;
+
+    while(listCubeEntryPtr  &&  !listCubeEntryPtr->isEmpty())
+    {
+    	layout->addWidget( label_fileName,	line, 0 );
+    	layout->addWidget( button_loadFile,	line, 1 );
+    	layout->addWidget( button_removeEntry,	line, 2 );
+	line ++;
+    	listCubeEntryPtr = listCubeEntryPtr->next;
+    }
 
     layout->addItem( new QSpacerItem( 0, 10 ), line++, 0 );
     layout->addWidget( reduce, line++, 0 );
@@ -97,6 +105,20 @@ CubeMerge::opened( ContextFreeServices* service )
     layout->addItem( new QSpacerItem( 0, 10 ), line++, 0 );
 
     layout->addWidget( merge, line++, 0 );
+}
+
+void
+CubeMerge::addCubeEntry()
+{
+    ListCubeEntry* listCubeEntryPtr = listCubeEntry->appendNewEntry();
+
+    connect(listCubeEntryPtr->button_loadFile,		SIGNAL( clicked() ), signalMapper_loadFile,	SLOT( map() ) );
+    connect(listCubeEntryPtr->button_removeEntry,	SIGNAL( clicked() ), signalMapper_removeEntry, 	SLOT( map() ) );
+
+    signalMapper_loadFile	->setMapping(listCubeEntryPtr->button_loadFile,		listCubeEntryPtr);
+    signalMapper_removeEntry	->setMapping(listCubeEntryPtr->button_removeEntry,	listCubeEntryPtr);
+
+    refreshGui();
 }
 
 void
@@ -113,24 +135,12 @@ CubeMerge::uncheckChoice()
 }
 
 void
-CubeMerge::loadFile1()
+CubeMerge::loadFile( ListCubeEntry* element )
 {
-    loadFile( &cube1, fileName1 );
-}
-
-void
-CubeMerge::loadFile2()
-{
-    loadFile( &cube2, fileName2 );
-}
-
-void
-CubeMerge::loadFile( cube::Cube** cube, QLabel* label )
-{
-    if ( *cube != 0 )
+    if ( *(element->cube) != 0 )
     {
-        ( *cube )->closeCubeReport();
-        *cube = 0;
+        ( *(element->cube) )->closeCubeReport();
+        *(element->cube) = 0;
     }
     QString file = QFileDialog::getOpenFileName( service->getWidget(),
                                                  tr( "Choose a file to open" ),
@@ -138,23 +148,23 @@ CubeMerge::loadFile( cube::Cube** cube, QLabel* label )
                                                  tr( "Cube3/4 files (*cube *cube.gz *.cubex);;Cube4 files (*.cubex);;Cube3 files (*.cube.gz *.cube);;All files (*.*);;All files (*)" ) );
     if ( !file.isNull() )
     {
-        *cube = new cube::Cube();
+        *(element->cube) = new cube::Cube();
         try {
-            ( *cube )->openCubeReport( file.toStdString() );
+            ( *(element->cube) )->openCubeReport( file.toStdString() );
         }
         catch ( const cube::OpenFileError& e  )
         {
             service->setMessage( QString( "Error. \n" ).append( e.what() ), cubepluginapi::Error );
             service->setMessage( tr( "Error during opening cube file...." ), cubepluginapi::Error );
-            delete cube;
-            cube = 0;
+            delete (element->cube);
+            (element->cube) = 0;
         }
         catch ( const cube::RuntimeError& e )
         {
             service->setMessage( QString( "Error. \n" ).append( e.what() ), cubepluginapi::Error );
             service->setMessage( tr( "Error during opening cube file...." ), cubepluginapi::Error );
-            delete cube;
-            cube = 0;
+            delete (element->cube);
+            (element->cube) = 0;
         }
     }
 
@@ -164,9 +174,18 @@ CubeMerge::loadFile( cube::Cube** cube, QLabel* label )
         file.remove( 0, file.length() - max );
         file.replace( 0, 3, "..." );
     }
-    label->setText( file );
-    merge->setEnabled( cube1 && cube2 );
+    element->label_fileName->setText( file );
+    merge->setEnabled( (listCubeEntry->getNbrNonNullCube()) >= 2 );
 }
+
+
+void
+CubeMerge::removeCubeEntry( ListCubeEntry* element )
+{
+    this->listCubeEntry->removeEntry( element );
+    refreshGui();
+}
+
 
 void
 CubeMerge::startAction()
@@ -196,16 +215,18 @@ CubeMerge::startAction()
 void
 CubeMerge::closed()
 {
-    if ( cube1 )
+    if ( listCubeEntry )
     {
-        delete cube1;
+        delete listCubeEntry;
     }
-    if ( cube2 )
+    if ( signalMapper_loadFile )
     {
-        delete cube2;
+	delete signalMapper_loadFile;
     }
-    cube1 = 0;
-    cube2 = 0;
+    if ( signalMapper_removeEntry )
+    {
+	delete signalMapper_removeEntry;
+    }
 }
 
 QString
