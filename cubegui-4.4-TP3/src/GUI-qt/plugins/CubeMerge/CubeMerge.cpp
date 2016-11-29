@@ -190,11 +190,15 @@ CubeMerge::removeCubeEntry( ListCubeEntry* element )
 void
 CubeMerge::startAction()
 {
-    cube::Cube* merge = new Cube();
-    try {
-// TODO - implement cube4_merge instead of cube4_diff
-        cube4_diff( merge, cube1, cube2, reduce->isChecked(), collapse->isChecked() );
-// TODO - end
+    cube::Cube*		merge	= new Cube();
+    int			nbrCube	= this->listCubeEntry.getNbrNonNullCube();
+    cube::Cube**	cubeList= new *Cube[nbrCube];
+
+    this->listCubeEntry.getNonNullCube( cubeList );
+
+    try
+    {
+        cube4_merge( merge, cubeList, nbrCube, reduce->isChecked(), collapse->isChecked() );
     }
     catch ( cube::Error e )
     {
@@ -204,28 +208,27 @@ CubeMerge::startAction()
         return;
     }
 
-    delete cube1;
-    delete cube2;
-    cube1 = 0;
-    cube2 = 0;
-
+    delete cubeList;
+    delete this->listCubeEntry;
     service->openCube( merge );
+
+// TODO check whether we need to refresh the current preview or will it be changed by a new one
 }
 
 void
 CubeMerge::closed()
 {
-    if ( listCubeEntry )
+    if ( this->listCubeEntry )
     {
-        delete listCubeEntry;
+        delete this->listCubeEntry;
     }
-    if ( signalMapper_loadFile )
+    if ( this->signalMapper_loadFile )
     {
-	delete signalMapper_loadFile;
+	delete this->signalMapper_loadFile;
     }
-    if ( signalMapper_removeEntry )
+    if ( this->signalMapper_removeEntry )
     {
-	delete signalMapper_removeEntry;
+	delete this->signalMapper_removeEntry;
     }
 }
 

@@ -24,10 +24,6 @@
 class ListCubeEntry
 {
 	public:
-		// Builder
-		ListCubeEntry();
-		~ListCubeEntry();
-
 		// Attributes
 		QLabel*		label_fileName;
 		QPushButton*	button_loadFile;
@@ -35,14 +31,16 @@ class ListCubeEntry
 		cube::Cube*	cube;
 		ListCubeEntry*	next;
 
+		// Builder
+		ListCubeEntry();
+		~ListCubeEntry();
+
 		// Methodes
 		ListCubeEntry*	appendNewEntry();
-		bool		isEmpty();
+		bool		isInitializedEntry();
 		int		getNbrNonNullCube();
+		int		getNonNullCube( cube::Cube** nonNullCubes );
 		bool		removeEntry( ListCubeEntry *entry );
-
-	private:
-		bool		removeEntry( ListCubeEntry *entry, ListCubeEntry *previous );
 }
 
 

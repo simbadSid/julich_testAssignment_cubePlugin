@@ -28,6 +28,9 @@ ListCubeEntry::ListCubeEntry()
 }
 
 
+/**
+ * Free all the allocated memory addresses (recursively on the next elements)
+ */
 ListCubeEntry::~ListCubeEntry()
 {
 	delete this-> label_fileName ;
@@ -40,15 +43,22 @@ ListCubeEntry::~ListCubeEntry()
 }
 
 
-bool ListCubeEntry::isEmpty()
+/**
+ * Returns true if the current list head has been initilized
+ */
+bool ListCubeEntry::isInitializedEntry()
 {
-	return ((! this->label_fileName) && (! this->button_loadFile) && (! this->button_removeEntry) && (! this->cube));
+	return (( this->label_fileName ) || ( this->button_loadFile ) || ( this->button_removeEntry ) || ( this->cube ));
 }
 
 
+/**
+ * Creates a new entry at the end of the list.
+ * Returns a pointer on the created entry.
+ */
 ListCubeEntry* ListCubeEntry::appendNewEntry()
 {
-	if ( this->isEmpty() )
+	if (! this->isInitializedEntry() )
 	{
 		this->label_fileName		= new QLabel();
 		this->button_loadFile		= new QPushButton(QApplication::style()->standardIcon( QStyle::SP_DirOpenIcon ), " Open cube file" );
@@ -68,19 +78,42 @@ ListCubeEntry* ListCubeEntry::appendNewEntry()
 }
 
 
+/**
+ * Returns the number of entries where the cube cell is non null (initialized) in the sublist starting at this.
+ */
 int ListCubeEntry::getNbrNonNullCube()
 {
+	return this->getNonNullCube(NULL);
+}
+
+
+/**
+ * Returns the number of entries where the cube cell is non null (initialized) in the sublist starting at this.
+ */
+int ListCubeEntry::getNonNullCube( cube::Cube** nonNullCubes )
+{
+	cube::Cube** nonNullCubesNext = NULL;
 	int res = 0;
+
+	if (nonNullCubes != NULL)
+	{
+		nonNullCubesNext = nonNullCubes;
+		nonNullCubesNext ++;
+	}
 
 	if (this->cube)
 		res ++;
 	if (this->next)
-		res += this->next->getNbrNonNullCube();
+		res += this->next->getNonNullCube(nonNullCubesNext);
 
 	return res;
 }
 
 
+/**
+ * Removes the given entry pointer from the list.
+ * Returns true if the given entry has been found.
+ */
 bool ListCubeEntry::removeEntry( ListCubeEntry *entry )
 {
 	if (entry == this)

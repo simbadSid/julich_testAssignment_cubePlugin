@@ -63,7 +63,7 @@ private slots:
     void
     removeCubeEntry( ListCubeEntry* element );
     void
-    startAction();	// TODO
+    startAction();
     void
     uncheckChoice();
 

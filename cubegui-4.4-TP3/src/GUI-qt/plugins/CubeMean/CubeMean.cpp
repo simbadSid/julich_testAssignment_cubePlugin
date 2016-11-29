@@ -174,9 +174,12 @@ CubeMean::startAction()
 {
     cube::Cube*		mean	= new Cube();
     cube::Cube**	cubeList= new *Cube[2];
+
     cubeList[0] = cube1;
     cubeList[1] = cube2;
-    try {
+
+    try
+    {
 	cube::cube4_mean(mean, cubeList, 2, reduce->isChecked(), collapse->isChecked())
     }
     catch ( cube::Error e )
@@ -189,6 +192,7 @@ CubeMean::startAction()
 
     delete cube1;
     delete cube2;
+    delete cubeList;
     cube1 = 0;
     cube2 = 0;
 
