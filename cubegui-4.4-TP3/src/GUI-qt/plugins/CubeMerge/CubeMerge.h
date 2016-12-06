@@ -22,7 +22,7 @@
 #include <QSignalMapper>
 #include "ContextFreePlugin.h"
 #include "ContextFreeServices.h"
-#include "listCubeEntry.h"
+#include "ListCubeEntry.h"
 
 
 

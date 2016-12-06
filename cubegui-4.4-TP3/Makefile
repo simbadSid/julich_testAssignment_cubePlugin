@@ -105,10 +105,10 @@ DIST_COMMON = $(srcdir)/vendor/common/build-config/Makefile.inc.am \
 	$(top_srcdir)/build-config/config.sub \
 	$(top_srcdir)/build-config/install-sh \
 	$(top_srcdir)/build-config/missing
-#am__append_1 = doxygen-gui doxygen-installation \
-#	doxygen-plugin-dev
-#am__append_2 = \
-#$(srcdir)/doc/dox-gui/images/Scalasca_logo_small.png
+am__append_1 = doxygen-gui doxygen-installation \
+	doxygen-plugin-dev
+am__append_2 = \
+$(srcdir)/doc/dox-gui/images/Scalasca_logo_small.png
 
 subdir = .
 ACLOCAL_M4 = $(top_srcdir)/aclocal.m4
@@ -233,14 +233,14 @@ distuninstallcheck_listfiles = find . -type f -print
 am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \
   | sed 's|^\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'
 distcleancheck_listfiles = find . -type f -print
-ACLOCAL = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing aclocal-1.13
+ACLOCAL = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing aclocal-1.13
 AFS_PACKAGE_NAME = CUBEGUI
 AFS_PACKAGE_name = cubegui
 AMTAR = $${TAR-tar}
 AM_DEFAULT_VERBOSITY = 0
-AUTOCONF = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing autoconf
-AUTOHEADER = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing autoheader
-AUTOMAKE = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing automake-1.13
+AUTOCONF = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing autoconf
+AUTOHEADER = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing autoheader
+AUTOMAKE = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing automake-1.13
 AWK = gawk
 CUBEGUI_BUILD_CODENAME = 
 CUBEGUI_BUILD_REVISION = 15343
@@ -248,7 +248,7 @@ CUBEGUI_BUILD_SHORT_NAME = CubeGUI
 CUBEGUI_BUILD_VERSION = 4.4-TP3
 CYGPATH_W = echo
 DEFS = -DPACKAGE_NAME=\"CubeGUI\" -DPACKAGE_TARNAME=\"cubegui\" -DPACKAGE_VERSION=\"4.4-TP3\" -DPACKAGE_STRING=\"CubeGUI\ 4.4-TP3\" -DPACKAGE_BUGREPORT=\"scalasca@fz-juelich.de\" -DPACKAGE_URL=\"http://www.scalasca.org\" -DPACKAGE=\"cubegui\" -DVERSION=\"4.4-TP3\" -DSCOREP_IN_PRODUCTION=/\*\*/ -DHAVE_PLATFORM_LINUX=1
-DOXYGEN = 
+DOXYGEN = /usr/bin/doxygen
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
@@ -263,7 +263,7 @@ LIBRARY_CURRENT = 8
 LIBRARY_REVISION = 0
 LIBS = 
 LTLIBOBJS = 
-MAKEINFO = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing makeinfo
+MAKEINFO = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing makeinfo
 MKDIR_P = /usr/bin/mkdir -p
 PACKAGE = cubegui
 PACKAGE_BUGFIX = 0
@@ -281,10 +281,10 @@ SET_MAKE =
 SHELL = /bin/sh
 STRIP = 
 VERSION = 4.4-TP3
-abs_builddir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3
-abs_srcdir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3
-abs_top_builddir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3
-abs_top_srcdir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3
+abs_builddir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3
+abs_srcdir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3
+abs_top_builddir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3
+abs_top_srcdir = /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3
 ac_scorep_doxygen_distdir = 
 ac_scorep_have_uncrustify = no
 am__leading_dot = .
@@ -304,15 +304,15 @@ docdir = ${datarootdir}/doc/${PACKAGE_TARNAME}
 dvidir = ${docdir}
 exec_prefix = ${prefix}
 frontend_targets = 
-have_dot = 
-have_doxygen_latex = no
-have_makeindex = 
-have_pdflatex = 
+have_dot = no
+have_doxygen_latex = yes
+have_makeindex = yes
+have_pdflatex = yes
 host_alias = 
 htmldir = ${docdir}
 includedir = ${prefix}/include
 infodir = ${datarootdir}/info
-install_sh = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/install-sh
+install_sh = ${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/install-sh
 libdir = ${exec_prefix}/lib
 libexecdir = ${exec_prefix}/libexec
 localedir = ${datarootdir}/locale
@@ -1067,46 +1067,46 @@ install-data-local:
 
 update-revision-file:
 
-#doxygen-gui: $(USER_DOC_DIR)/gui/tags
-#	echo "Create GUI documentation "
-#	@-cat doc/doxygen-gui.cfg  | doxygen -
-#	@-_tmp=`pwd`; cd $(srcdir)/doc/dox-gui/images; pdflatex titlepage.tex; pdflatex titlepage.tex; cd $$_tmp
-#	@-cp $(srcdir)/doc/dox-gui/images/*.pdf $(USER_DOC_DIR)/gui/pdf/.
-#	@-cp $(srcdir)/doc/dox-gui/scalasca.sty $(USER_DOC_DIR)/gui/pdf/.
-#	@-cp $(srcdir)/doc/dox-gui/figures/*.png $(USER_DOC_DIR)/gui/pdf/.
-#	@-echo "Create Cube GUI documentation (run pdflatex)"
-#	@-_tmp=`pwd`; cd $(USER_DOC_DIR)/gui/pdf/; make; cd $$_tmp; cp $(USER_DOC_DIR)/gui/pdf/refman.pdf $(srcdir)/doc/CubeGuide.pdf
+doxygen-gui: $(USER_DOC_DIR)/gui/tags
+	echo "Create GUI documentation "
+	@-cat doc/doxygen-gui.cfg  | doxygen -
+	@-_tmp=`pwd`; cd $(srcdir)/doc/dox-gui/images; pdflatex titlepage.tex; pdflatex titlepage.tex; cd $$_tmp
+	@-cp $(srcdir)/doc/dox-gui/images/*.pdf $(USER_DOC_DIR)/gui/pdf/.
+	@-cp $(srcdir)/doc/dox-gui/scalasca.sty $(USER_DOC_DIR)/gui/pdf/.
+	@-cp $(srcdir)/doc/dox-gui/figures/*.png $(USER_DOC_DIR)/gui/pdf/.
+	@-echo "Create Cube GUI documentation (run pdflatex)"
+	@-_tmp=`pwd`; cd $(USER_DOC_DIR)/gui/pdf/; make; cd $$_tmp; cp $(USER_DOC_DIR)/gui/pdf/refman.pdf $(srcdir)/doc/CubeGuide.pdf
 
-#$(USER_DOC_DIR)/gui/tags:
-#	echo "Create tags directory $(USER_DOC_DIR)/gui/tags"
-#	mkdir -p $(USER_DOC_DIR)/gui/tags	
+$(USER_DOC_DIR)/gui/tags:
+	echo "Create tags directory $(USER_DOC_DIR)/gui/tags"
+	mkdir -p $(USER_DOC_DIR)/gui/tags	
 
-#doxygen-installation: $(USER_DOC_DIR)/installation/tags
-#	@-echo "Create Installation documentation (run doxygen)"
-#	@-cat doc/doxygen-installation.cfg  | doxygen -
-#	@-_tmp=`pwd`; cd $(srcdir)/doc/dox-installation/images; pdflatex titlepage.tex; pdflatex titlepage.tex; cd $$_tmp
-#	@-cp $(srcdir)/doc/dox-installation/images/*.pdf $(USER_DOC_DIR)/installation/pdf/.
-#	@-cp $(srcdir)/doc/dox-installation/scalasca.sty $(USER_DOC_DIR)/installation/pdf/.
-#	@-echo "Create Installation documentation (run pdflatex)"
-#	@-_tmp=`pwd`; cd $(USER_DOC_DIR)/installation/pdf/; make;  cd $$_tmp; cp $(USER_DOC_DIR)/installation/pdf/refman.pdf $(srcdir)/doc/CubeInstall.pdf
+doxygen-installation: $(USER_DOC_DIR)/installation/tags
+	@-echo "Create Installation documentation (run doxygen)"
+	@-cat doc/doxygen-installation.cfg  | doxygen -
+	@-_tmp=`pwd`; cd $(srcdir)/doc/dox-installation/images; pdflatex titlepage.tex; pdflatex titlepage.tex; cd $$_tmp
+	@-cp $(srcdir)/doc/dox-installation/images/*.pdf $(USER_DOC_DIR)/installation/pdf/.
+	@-cp $(srcdir)/doc/dox-installation/scalasca.sty $(USER_DOC_DIR)/installation/pdf/.
+	@-echo "Create Installation documentation (run pdflatex)"
+	@-_tmp=`pwd`; cd $(USER_DOC_DIR)/installation/pdf/; make;  cd $$_tmp; cp $(USER_DOC_DIR)/installation/pdf/refman.pdf $(srcdir)/doc/CubeInstall.pdf
 
-#$(USER_DOC_DIR)/installation/tags:
-#	mkdir -p $(USER_DOC_DIR)/installation/tags
+$(USER_DOC_DIR)/installation/tags:
+	mkdir -p $(USER_DOC_DIR)/installation/tags
 
-#doxygen-plugin-dev: $(USER_DOC_DIR)/plugin-dev/tags
-#	echo "Create Gui Plugin developer documentation (run doxygen) "
-#	@-cat doc/doxygen-plugin-dev.cfg  | doxygen -
-#	@-_tmp=`pwd`; cd $(srcdir)/doc/dox-plugin-dev/images; pdflatex titlepage.tex; pdflatex titlepage.tex; cd $$_tmp
-#	@-cp $(srcdir)/doc/dox-plugin-dev/images/*.pdf $(USER_DOC_DIR)/plugin-dev/pdf/.
-#	@-cp $(srcdir)/doc/dox-plugin-dev/images/*.png $(USER_DOC_DIR)/plugin-dev/pdf/.
-#	@-cp $(srcdir)/doc/dox-plugin-dev/scalasca.sty $(USER_DOC_DIR)/plugin-dev/pdf/.
-#	@cd $(USER_DOC_DIR)/plugin-dev/pdf/; cp refman.tex refman.tex.orig; cat refman.tex.orig | grep -v " Index" | grep -v "hierarchy" | grep -v "annotated" > refman.tex
-#	@cd $(USER_DOC_DIR)/plugin-dev/pdf/; cp classPluginServices.tex classPluginServices.tex.orig; cat classPluginServices.tex.orig | sed 's/label{/mylabel{/g' > classPluginServices.tex
-#	@-echo "Create Cube GUI Plugin developer documentation (run pdflatex)"
-#	@-_tmp=`pwd`; cd $(USER_DOC_DIR)/plugin-dev/pdf/; make; cd $$_tmp ; cp $(USER_DOC_DIR)/plugin-dev/pdf/refman.pdf $(srcdir)/doc/CubeGuiPluginDeveloperGuide.pdf
+doxygen-plugin-dev: $(USER_DOC_DIR)/plugin-dev/tags
+	echo "Create Gui Plugin developer documentation (run doxygen) "
+	@-cat doc/doxygen-plugin-dev.cfg  | doxygen -
+	@-_tmp=`pwd`; cd $(srcdir)/doc/dox-plugin-dev/images; pdflatex titlepage.tex; pdflatex titlepage.tex; cd $$_tmp
+	@-cp $(srcdir)/doc/dox-plugin-dev/images/*.pdf $(USER_DOC_DIR)/plugin-dev/pdf/.
+	@-cp $(srcdir)/doc/dox-plugin-dev/images/*.png $(USER_DOC_DIR)/plugin-dev/pdf/.
+	@-cp $(srcdir)/doc/dox-plugin-dev/scalasca.sty $(USER_DOC_DIR)/plugin-dev/pdf/.
+	@cd $(USER_DOC_DIR)/plugin-dev/pdf/; cp refman.tex refman.tex.orig; cat refman.tex.orig | grep -v " Index" | grep -v "hierarchy" | grep -v "annotated" > refman.tex
+	@cd $(USER_DOC_DIR)/plugin-dev/pdf/; cp classPluginServices.tex classPluginServices.tex.orig; cat classPluginServices.tex.orig | sed 's/label{/mylabel{/g' > classPluginServices.tex
+	@-echo "Create Cube GUI Plugin developer documentation (run pdflatex)"
+	@-_tmp=`pwd`; cd $(USER_DOC_DIR)/plugin-dev/pdf/; make; cd $$_tmp ; cp $(USER_DOC_DIR)/plugin-dev/pdf/refman.pdf $(srcdir)/doc/CubeGuiPluginDeveloperGuide.pdf
 
-#$(USER_DOC_DIR)/plugin-dev/tags:
-#	mkdir -p $(USER_DOC_DIR)/plugin-dev/tags
+$(USER_DOC_DIR)/plugin-dev/tags:
+	mkdir -p $(USER_DOC_DIR)/plugin-dev/tags
 
 .PHONY: $(PHONY_TARGETS)
 

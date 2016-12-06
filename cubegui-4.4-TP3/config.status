@@ -393,7 +393,7 @@ on `(hostname || uname -n) 2>/dev/null | sed 1q`
 "
 
 # Files that config.status was made for.
-config_files=" Makefile src/cubegui-version.h:src/cubegui-version.h.in src/config.h:src/config.h.in src/cubegui-config-common.h:vendor/common/build-config/config-common.h"
+config_files=" Makefile src/cubegui-version.h:src/cubegui-version.h.in src/config.h:src/config.h.in src/cubegui-config-common.h:vendor/common/build-config/config-common.h doc/doxygen-gui.cfg:doc/doxygen/config/doxygen-gui.cfg.in doc/doxygen-installation.cfg:doc/doxygen/config/doxygen-installation.cfg.in doc/doxygen-plugin-dev.cfg:doc/doxygen/config/doxygen-plugin-dev.cfg.in"
 
 ac_cs_usage="\
 \`$as_me' instantiates files and other configuration actions
@@ -428,7 +428,7 @@ Copyright (C) 2012 Free Software Foundation, Inc.
 This config.status script is free software; the Free Software Foundation
 gives unlimited permission to copy, distribute and modify it."
 
-ac_pwd='/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3'
+ac_pwd='/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3'
 srcdir='.'
 INSTALL='/usr/bin/install -c'
 MKDIR_P='/usr/bin/mkdir -p'
@@ -598,15 +598,15 @@ S["frontend_targets"]=""
 S["backend_targets"]="backend"
 S["subdirs_custom"]=" build-frontend"
 S["ac_scorep_doxygen_distdir"]=""
-S["HAVE_DOXYGEN_LATEX_FALSE"]=""
-S["HAVE_DOXYGEN_LATEX_TRUE"]="#"
-S["have_doxygen_latex"]="no"
-S["have_makeindex"]=""
-S["have_pdflatex"]=""
-S["have_dot"]=""
-S["HAVE_DOXYGEN_FALSE"]=""
-S["HAVE_DOXYGEN_TRUE"]="#"
-S["DOXYGEN"]=""
+S["HAVE_DOXYGEN_LATEX_FALSE"]="#"
+S["HAVE_DOXYGEN_LATEX_TRUE"]=""
+S["have_doxygen_latex"]="yes"
+S["have_makeindex"]="yes"
+S["have_pdflatex"]="yes"
+S["have_dot"]="no"
+S["HAVE_DOXYGEN_FALSE"]="#"
+S["HAVE_DOXYGEN_TRUE"]=""
+S["DOXYGEN"]="/usr/bin/doxygen"
 S["PLATFORM_CRAY_FALSE"]=""
 S["PLATFORM_CRAY_TRUE"]="#"
 S["PLATFORM_FX100_FALSE"]=""
@@ -689,12 +689,18 @@ S["mkdir_p"]="$(MKDIR_P)"
 S["MKDIR_P"]="/usr/bin/mkdir -p"
 S["INSTALL_STRIP_PROGRAM"]="$(install_sh) -c -s"
 S["STRIP"]=""
-S["install_sh"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/install-sh"
-S["MAKEINFO"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing makeinfo"
-S["AUTOHEADER"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing autoheader"
-S["AUTOMAKE"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing automake-1.13"
-S["AUTOCONF"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing autoconf"
-S["ACLOCAL"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-4.4-TP3/build-config/missing aclocal-1.13"
+S["install_sh"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/install-s"\
+"h"
+S["MAKEINFO"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing m"\
+"akeinfo"
+S["AUTOHEADER"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing a"\
+"utoheader"
+S["AUTOMAKE"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing a"\
+"utomake-1.13"
+S["AUTOCONF"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing a"\
+"utoconf"
+S["ACLOCAL"]="${SHELL} /home/kassuskley/Desktop/khedma/internship/julich/assignment/report/julich_testAssignment_cubePlugin/cubegui-4.4-TP3/build-config/missing a"\
+"clocal-1.13"
 S["VERSION"]="4.4-TP3"
 S["PACKAGE"]="cubegui"
 S["CYGPATH_W"]="echo"
