@@ -29,6 +29,16 @@ AC_MSG_CHECKING([ plugin "CubeDiff"])
 AC_CUBE_PLUGIN_CUBE_DIFF
 AM_CONDITIONAL([WITH_GUI_PLUGIN_CUBE_DIFF], [test x$WITH_GUI_PLUGIN_CUBE_DIFF == "xyes"])
 
+## plugin CubeMean
+AC_MSG_CHECKING([ plugin "CubeMean"])
+AC_CUBE_PLUGIN_CUBE_MEAN
+AM_CONDITIONAL([WITH_GUI_PLUGIN_CUBE_MEAN], [test x$WITH_GUI_PLUGIN_CUBE_MEAN == "xyes"])
+
+## plugin CubeMerge
+AC_MSG_CHECKING([ plugin "CubeMerge"])
+AC_CUBE_PLUGIN_CUBE_MERGE
+AM_CONDITIONAL([WITH_GUI_PLUGIN_CUBE_MERGE], [test x$WITH_GUI_PLUGIN_CUBE_MERGE == "xyes"])
+
 ## plugin graphwidgetcommon
 AC_MSG_CHECKING([ plugin "graphwidgetcommon"])
 AC_CUBE_PLUGIN_GRAPHWIDGETCOMMON
@@ -85,6 +95,42 @@ AC_MSG_RESULT([ deactivate.])
 AC_MSG_RESULT([ activate.])
 ])
 ])
+
+
+
+AC_DEFUN([AC_CUBE_PLUGIN_CUBE_MEAN],
+[
+WITH_GUI_PLUGIN_CUBE_MEAN=yes
+AC_ARG_WITH(plugin-cube-mean, [AS_HELP_STRING([--with-plugin-cube-mean | --without-plugin-cube-mean], 
+          [ Enables (default) or disables build and installation of a plugin "CubeMean"])], [], [])
+
+AS_IF( [ test x$with_plugin_cube-mean = "xno" || test x$without_plugin_cube-mean = "xyes"], [
+WITH_GUI_PLUGIN_CUBE_MEAN="no";
+AC_MSG_RESULT([ deactivate.])
+], [ 
+AC_MSG_RESULT([ activate.])
+])
+])
+
+
+
+AC_DEFUN([AC_CUBE_PLUGIN_CUBE_MERGE],
+[
+WITH_GUI_PLUGIN_CUBE_MERGE=yes
+AC_ARG_WITH(plugin-cube-merge, [AS_HELP_STRING([--with-plugin-cube-merge | --without-plugin-cube-merge], 
+          [ Enables (default) or disables build and installation of a plugin "CubeMerge"])], [], [])
+
+AS_IF( [ test x$with_plugin_cube-merge = "xno" || test x$without_plugin_cube-merge = "xyes"], [
+WITH_GUI_PLUGIN_CUBE_MERGE="no";
+AC_MSG_RESULT([ deactivate.])
+], [ 
+AC_MSG_RESULT([ activate.])
+])
+])
+
+
+
+
 
 AC_DEFUN([AC_CUBE_PLUGIN_LAUNCH],
 [

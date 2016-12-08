@@ -35,13 +35,13 @@ cubegui_config_get_frontend_data( void )
 
     data.m_cc                    = " gcc";
     data.m_cxx                   = " g++";
-    data.m_cppflags              = "-I/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-install/include/cubegui";
-    data.m_incldir               = "/home/kassuskley/Desktop/khedma/internship/julich/assignment/report/cubegui-install/include/cubegui";
+    data.m_cppflags              = "-I/opt/modules/packages/cube/tarball-for-builds/CubeGUI-releasetag/include/cubegui";
+    data.m_incldir               = "/opt/modules/packages/cube/tarball-for-builds/CubeGUI-releasetag/include/cubegui";
     data.m_use_rpath_flag        = 1;
     data.m_rpath_flag_cc         = "$wl-rpath $wl$libdir";
     data.m_wl_flag               = "-Wl,";
     data.m_aix_libpath           = "";
-    data.m_sys_lib_dlsearch_path = "/lib /usr/lib /usr/lib64/R/lib /usr/lib64/atlas /usr/lib64/bind99 /usr/lib64/iscsi /usr/lib64/tcl8.6 ";
+    data.m_sys_lib_dlsearch_path = "/lib /usr/lib /lib/i386-linux-gnu /usr/lib/i386-linux-gnu /lib/i486-linux-gnu /usr/lib/i486-linux-gnu /usr/local/lib /lib/x86_64-linux-gnu /usr/lib/x86_64-linux-gnu /lib32 /usr/lib32 ";
 
     deque<string> libs;
     deque<string> ldflags;

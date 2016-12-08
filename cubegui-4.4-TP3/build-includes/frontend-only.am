@@ -65,6 +65,12 @@ if WITH_GUI_PLUGIN_CUBE_DIFF
 include ../src/GUI-qt/plugins/CubeDiff/Makefile.diff-plugin.inc.am
 endif
 
+if WITH_GUI_PLUGIN_CUBE_MEAN
+include ../src/GUI-qt/plugins/CubeMean/Makefile.mean-plugin.inc.am
+endif
 
+if WITH_GUI_PLUGIN_CUBE_MERGE
+include ../src/GUI-qt/plugins/CubeMerge/Makefile.merge-plugin.inc.am
+endif
 
 

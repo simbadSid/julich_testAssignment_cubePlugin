@@ -728,6 +728,10 @@ WITH_GUI_PLUGIN_GRAPHWIDGET_COMMON_FALSE
 WITH_GUI_PLUGIN_GRAPHWIDGET_COMMON_TRUE
 WITH_GUI_PLUGIN_CUBE_DIFF_FALSE
 WITH_GUI_PLUGIN_CUBE_DIFF_TRUE
+WITH_GUI_PLUGIN_CUBE_MEAN_FALSE
+WITH_GUI_PLUGIN_CUBE_MEAN_TRUE
+WITH_GUI_PLUGIN_CUBE_MERGE_FALSE
+WITH_GUI_PLUGIN_CUBE_MERGE_TRUE
 QT_LIBS
 QT_LDFLAGS
 QT_LFLAGS
@@ -908,6 +912,8 @@ with_qt_specs
 with_qt_correction
 with_plugin_launch
 with_plugin_cube_diff
+with_plugin_cube_merge
+with_plugin_cube_mean
 with_plugin_barplot
 with_plugin_heatmap
 with_plugin_source
@@ -1607,6 +1613,12 @@ Optional Packages:
   --with-plugin-cube-diff | --without-plugin-cube-diff
                           Enables (default) or disables build and installation
                           of a plugin "CubeDiff"
+  --with-plugin-cube-mean | --without-plugin-cube-mean
+                          Enables (default) or disables build and installation
+                          of a plugin "CubeMean"
+  --with-plugin-cube-merge | --without-plugin-cube-merge
+                          Enables (default) or disables build and installation
+                          of a plugin "CubeMerge"
   --with-plugin-barplot| --without-plugin-barplot
                           Enables (default) or disables build and installation
                           of a plugin "Barplot"
@@ -18232,6 +18244,74 @@ else
 fi
 
 
+## plugin CubeMean
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking  plugin \"CubeMean\"" >&5
+$as_echo_n "checking  plugin \"CubeMean\"... " >&6; }
+
+WITH_GUI_PLUGIN_CUBE_MEAN=yes
+
+# Check whether --with-plugin-cube-mean was given.
+if test "${with_plugin_cube_mean+set}" = set; then :
+  withval=$with_plugin_cube_mean;
+fi
+
+
+if  test x$with_plugin_cube-mean = "xno" || test x$without_plugin_cube-mean = "xyes"; then :
+
+WITH_GUI_PLUGIN_CUBE_MEAN="no";
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result:  deactivate." >&5
+$as_echo " deactivate." >&6; }
+
+else
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result:  activate." >&5
+$as_echo " activate." >&6; }
+
+fi
+
+ if test x$WITH_GUI_PLUGIN_CUBE_MEAN == "xyes"; then
+  WITH_GUI_PLUGIN_CUBE_MEAN_TRUE=
+  WITH_GUI_PLUGIN_CUBE_MEAN_FALSE='#'
+else
+  WITH_GUI_PLUGIN_CUBE_MEAN_TRUE='#'
+  WITH_GUI_PLUGIN_CUBE_MEAN_FALSE=
+fi
+
+
+## plugin CubeMerge
+{ $as_echo "$as_me:${as_lineno-$LINENO}: checking  plugin \"CubeMerge\"" >&5
+$as_echo_n "checking  plugin \"CubeMerge\"... " >&6; }
+
+WITH_GUI_PLUGIN_CUBE_MERGE=yes
+
+# Check whether --with-plugin-cube-merge was given.
+if test "${with_plugin_cube_merge+set}" = set; then :
+  withval=$with_plugin_cube_merge;
+fi
+
+
+if  test x$with_plugin_cube-merge = "xno" || test x$without_plugin_cube-merge = "xyes"; then :
+
+WITH_GUI_PLUGIN_CUBE_MERGE="no";
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result:  deactivate." >&5
+$as_echo " deactivate." >&6; }
+
+else
+
+{ $as_echo "$as_me:${as_lineno-$LINENO}: result:  activate." >&5
+$as_echo " activate." >&6; }
+
+fi
+
+ if test x$WITH_GUI_PLUGIN_CUBE_MERGE == "xyes"; then
+  WITH_GUI_PLUGIN_CUBE_MERGE_TRUE=
+  WITH_GUI_PLUGIN_CUBE_MERGE_FALSE='#'
+else
+  WITH_GUI_PLUGIN_CUBE_MERGE_TRUE='#'
+  WITH_GUI_PLUGIN_CUBE_MERGE_FALSE=
+fi
+
+
 ## plugin graphwidgetcommon
 { $as_echo "$as_me:${as_lineno-$LINENO}: checking  plugin \"graphwidgetcommon\"" >&5
 $as_echo_n "checking  plugin \"graphwidgetcommon\"... " >&6; }
@@ -18825,6 +18905,22 @@ else
   WITH_GUI_PLUGIN_CUBE_DIFF_FALSE=
 fi
 
+ if test x$WITH_GUI_PLUGIN_CUBE_MEAN == "xyes"; then
+  WITH_GUI_PLUGIN_CUBE_MEAN_TRUE=
+  WITH_GUI_PLUGIN_CUBE_MEAN_FALSE='#'
+else
+  WITH_GUI_PLUGIN_CUBE_MEAN_TRUE='#'
+  WITH_GUI_PLUGIN_CUBE_MEAN_FALSE=
+fi
+
+ if test x$WITH_GUI_PLUGIN_CUBE_MERGE == "xyes"; then
+  WITH_GUI_PLUGIN_CUBE_MERGE_TRUE=
+  WITH_GUI_PLUGIN_CUBE_MERGE_FALSE='#'
+else
+  WITH_GUI_PLUGIN_CUBE_MERGE_TRUE='#'
+  WITH_GUI_PLUGIN_CUBE_MERGE_FALSE=
+fi
+
  if test x$WITH_GUI_PLUGIN_LAUNCH == "xyes"; then
   WITH_GUI_PLUGIN_LAUNCH_TRUE=
   WITH_GUI_PLUGIN_LAUNCH_FALSE='#'
@@ -19054,6 +19150,18 @@ _ACEOF
 
 cat >>config.summary <<_ACEOF
         Plugin "CubeDiff":      $WITH_GUI_PLUGIN_CUBE_DIFF
+_ACEOF
+
+
+
+cat >>config.summary <<_ACEOF
+        Plugin "CubeMean":      $WITH_GUI_PLUGIN_CUBE_MEAN
+_ACEOF
+
+
+
+cat >>config.summary <<_ACEOF
+        Plugin "CubeMerge":      $WITH_GUI_PLUGIN_CUBE_MERGE
 _ACEOF
 
 
@@ -19309,6 +19417,14 @@ if test -z "${WITH_GUI_PLUGIN_CUBE_DIFF_TRUE}" && test -z "${WITH_GUI_PLUGIN_CUB
   as_fn_error $? "conditional \"WITH_GUI_PLUGIN_CUBE_DIFF\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
+if test -z "${WITH_GUI_PLUGIN_CUBE_MEAN_TRUE}" && test -z "${WITH_GUI_PLUGIN_CUBE_MEAN_FALSE}"; then
+  as_fn_error $? "conditional \"WITH_GUI_PLUGIN_CUBE_MEAN\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${WITH_GUI_PLUGIN_CUBE_MERGE_TRUE}" && test -z "${WITH_GUI_PLUGIN_CUBE_MERGE_FALSE}"; then
+  as_fn_error $? "conditional \"WITH_GUI_PLUGIN_CUBE_MERGE\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
 if test -z "${WITH_GUI_PLUGIN_GRAPHWIDGET_COMMON_TRUE}" && test -z "${WITH_GUI_PLUGIN_GRAPHWIDGET_COMMON_FALSE}"; then
   as_fn_error $? "conditional \"WITH_GUI_PLUGIN_GRAPHWIDGET_COMMON\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
@@ -19343,6 +19459,14 @@ Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${WITH_GUI_PLUGIN_CUBE_DIFF_TRUE}" && test -z "${WITH_GUI_PLUGIN_CUBE_DIFF_FALSE}"; then
   as_fn_error $? "conditional \"WITH_GUI_PLUGIN_CUBE_DIFF\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${WITH_GUI_PLUGIN_CUBE_MEAN_TRUE}" && test -z "${WITH_GUI_PLUGIN_CUBE_MEAN_FALSE}"; then
+  as_fn_error $? "conditional \"WITH_GUI_PLUGIN_CUBE_MEAN\" was never defined.
+Usually this means the macro was only invoked conditionally." "$LINENO" 5
+fi
+if test -z "${WITH_GUI_PLUGIN_CUBE_MERGE_TRUE}" && test -z "${WITH_GUI_PLUGIN_CUBE_MERGE_FALSE}"; then
+  as_fn_error $? "conditional \"WITH_GUI_PLUGIN_CUBE_MERGE\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 if test -z "${WITH_GUI_PLUGIN_LAUNCH_TRUE}" && test -z "${WITH_GUI_PLUGIN_LAUNCH_FALSE}"; then
